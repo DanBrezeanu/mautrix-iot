@@ -1,0 +1,51 @@
+# Homeserver details
+homeserver:
+    # The address that this appservice can use to connect to the homeserver.
+    address: https://matrix.example.com
+    # The domain of the homeserver (also known as server_name, used for MXIDs, etc).
+    domain: matrix.example.com
+    # Whether or not to verify the SSL certificate of the homeserver.
+    # Only applies if address starts with https://
+    verify_ssl: true
+    # What software is the homeserver running?
+    # Standard Matrix homeservers like Synapse, Dendrite and Conduit should just use "standard" here.
+    software: standard
+    # Number of retries for all HTTP requests if the homeserver isn't reachable.
+    http_retry_count: 4
+    # The URL to push real-time bridge status to.
+    # If set, the bridge will make POST requests to this URL whenever a user's Signal connection state changes.
+    # The bridge will use the appservice as_token to authorize requests.
+    status_endpoint:
+    # Maximum number of simultaneous HTTP connections to the homeserver.
+    connection_limit: 100
+
+# Application service host/registration related details
+# Changing these values requires regeneration of the registration.
+appservice:
+    # The address that the homeserver can use to connect to this appservice.
+    host: 192.168.1.2
+    port: 35328
+
+    # When using https:// the TLS certificate and key files for the address.
+    tls_cert: false
+    tls_key: false
+
+    rate_limit_retry: 5
+
+    # The full URI to the database. SQLite and Postgres are supported.
+    # Format examples:
+    #   SQLite:   sqlite:///filename.db
+    #   Postgres: postgres://username:password@hostname/dbname
+    database: sqlite:///./mautrix-iot.db
+
+    id: mautrix-iot
+    # Username of the appservice bot.
+    bot_username: iot_bot
+    # Display name and avatar for bot. Set to "remove" to remove display name/avatar, leave empty
+    # to leave display name/avatar as-is.
+    bot_displayname: IoT Bot
+    bot_avatar: mxc://maunium.net/wPJgTQbZOtpBFmDNkiNEMDUp
+    
+    # !! CHANGE THESE
+    as_token: O2tPjGaCj2V9BtvRHybMhU6NzCmnqpLxWyJ7T9vABCEVbK2I5MYiJ4BPT-ZwwmRm
+    hs_token: 4aRzTJkTQutb9QrfePVEj1FlR3rIr15t_OswuI95s1RQyDOSNwP7pGHtAnoWGtHM
